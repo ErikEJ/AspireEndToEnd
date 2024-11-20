@@ -13,6 +13,10 @@
         <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PostDeploy Include="Post-Deployment\Post-Deploy.sql" />
+    </ItemGroup>
+
     <PropertyGroup>
         <!-- Refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#publishing-support for supported publishing options -->
     </PropertyGroup>

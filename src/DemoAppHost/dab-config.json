@@ -8,6 +8,9 @@
     }
   },
   "runtime": {
+    "pagination": {
+      "default-page-size": 1000
+    },
     "rest": {
       "enabled": true,
       "path": "/api",
@@ -30,16 +33,16 @@
     }
   },
   "entities": {
-    "Table": {
+    "Album": {
       "source": {
-        "object": "[dbo].[Table]",
+        "object": "[dbo].[Album]",
         "type": "table"
       },
       "graphql": {
         "enabled": true,
         "type": {
-          "singular": "Table",
-          "plural": "Tables"
+          "singular": "Album",
+          "plural": "Albums"
         }
       },
       "rest": {
@@ -54,14 +57,576 @@
               "fields": {
                 "exclude": [],
                 "include": [
-                  "Id",
+                  "AlbumId",
+                  "Title",
+                  "ArtistId"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "Artist": {
+          "cardinality": "one",
+          "target.entity": "Artist",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "Track": {
+          "cardinality": "many",
+          "target.entity": "Track",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "Artist": {
+      "source": {
+        "object": "[dbo].[Artist]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Artist",
+          "plural": "Artists"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "ArtistId",
                   "Name"
                 ]
               }
             }
           ]
         }
-      ]
+      ],
+      "relationships": {
+        "Album": {
+          "cardinality": "many",
+          "target.entity": "Album",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "Customer": {
+      "source": {
+        "object": "[dbo].[Customer]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Customer",
+          "plural": "Customers"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "CustomerId",
+                  "FirstName",
+                  "LastName",
+                  "Company",
+                  "Address",
+                  "City",
+                  "State",
+                  "Country",
+                  "PostalCode",
+                  "Phone",
+                  "Fax",
+                  "Email",
+                  "SupportRepId"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "Employee": {
+          "cardinality": "one",
+          "target.entity": "Employee",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "Invoice": {
+          "cardinality": "many",
+          "target.entity": "Invoice",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "Employee": {
+      "source": {
+        "object": "[dbo].[Employee]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Employee",
+          "plural": "Employees"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "EmployeeId",
+                  "LastName",
+                  "FirstName",
+                  "Title",
+                  "ReportsTo",
+                  "BirthDate",
+                  "HireDate",
+                  "Address",
+                  "City",
+                  "State",
+                  "Country",
+                  "PostalCode",
+                  "Phone",
+                  "Fax",
+                  "Email"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "Customer": {
+          "cardinality": "many",
+          "target.entity": "Customer",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "Employee": {
+          "cardinality": "many",
+          "target.entity": "Employee",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "Genre": {
+      "source": {
+        "object": "[dbo].[Genre]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Genre",
+          "plural": "Genres"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "GenreId",
+                  "Name"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "Track": {
+          "cardinality": "many",
+          "target.entity": "Track",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "Invoice": {
+      "source": {
+        "object": "[dbo].[Invoice]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Invoice",
+          "plural": "Invoices"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "InvoiceId",
+                  "CustomerId",
+                  "InvoiceDate",
+                  "BillingAddress",
+                  "BillingCity",
+                  "BillingState",
+                  "BillingCountry",
+                  "BillingPostalCode",
+                  "Total"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "Customer": {
+          "cardinality": "one",
+          "target.entity": "Customer",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "InvoiceLine": {
+          "cardinality": "many",
+          "target.entity": "InvoiceLine",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "InvoiceLine": {
+      "source": {
+        "object": "[dbo].[InvoiceLine]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "InvoiceLine",
+          "plural": "InvoiceLines"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "InvoiceLineId",
+                  "InvoiceId",
+                  "TrackId",
+                  "UnitPrice",
+                  "Quantity"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "Invoice": {
+          "cardinality": "one",
+          "target.entity": "Invoice",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "Track": {
+          "cardinality": "one",
+          "target.entity": "Track",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "MediaType": {
+      "source": {
+        "object": "[dbo].[MediaType]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "MediaType",
+          "plural": "MediaTypes"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "MediaTypeId",
+                  "Name"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "Track": {
+          "cardinality": "many",
+          "target.entity": "Track",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "Playlist": {
+      "source": {
+        "object": "[dbo].[Playlist]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Playlist",
+          "plural": "Playlists"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "PlaylistId",
+                  "Name"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "PlaylistTrack": {
+          "cardinality": "many",
+          "target.entity": "PlaylistTrack",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "PlaylistTrack": {
+      "source": {
+        "object": "[dbo].[PlaylistTrack]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "PlaylistTrack",
+          "plural": "PlaylistTracks"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "PlaylistId",
+                  "TrackId"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "Playlist": {
+          "cardinality": "one",
+          "target.entity": "Playlist",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "Track": {
+          "cardinality": "one",
+          "target.entity": "Track",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "Track": {
+      "source": {
+        "object": "[dbo].[Track]",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Track",
+          "plural": "Tracks"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            {
+              "action": "*",
+              "fields": {
+                "exclude": [],
+                "include": [
+                  "TrackId",
+                  "Name",
+                  "AlbumId",
+                  "MediaTypeId",
+                  "GenreId",
+                  "Composer",
+                  "Milliseconds",
+                  "Bytes",
+                  "UnitPrice"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "InvoiceLine": {
+          "cardinality": "many",
+          "target.entity": "InvoiceLine",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "PlaylistTrack": {
+          "cardinality": "many",
+          "target.entity": "PlaylistTrack",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "Album": {
+          "cardinality": "one",
+          "target.entity": "Album",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "Genre": {
+          "cardinality": "one",
+          "target.entity": "Genre",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        },
+        "MediaType": {
+          "cardinality": "one",
+          "target.entity": "MediaType",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
     }
   }
 }

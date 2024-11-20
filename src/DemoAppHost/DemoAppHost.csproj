@@ -13,12 +13,13 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="9.0.0" />
-    <PackageReference Include="CommunityToolkit.Aspire.Hosting.SqlDatabaseProjects" Version="9.0.0-beta.70" />
-    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Azure.DataApiBuilder" Version="9.0.0-beta.70" />    
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.SqlDatabaseProjects" Version="9.0.0" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Azure.DataApiBuilder" Version="9.0.0" />    
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Database\Database.csproj" />
+    <ProjectReference Include="..\Metalhead.WpfApiDataExample.UI.Wpf\Metalhead.WpfApiDataExample.UI.Wpf.csproj" />
   </ItemGroup>
 
 </Project>
