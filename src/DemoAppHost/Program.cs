@@ -1,7 +1,3 @@
-//TODO Create .dacpac package from Chinook with Artists and Albums merge scripts as Post-Deploy
-
-using System;
-
 var builder = DistributedApplication.CreateBuilder(args);
 
 var sqlServer = builder.AddSqlServer("sql");
@@ -22,4 +18,3 @@ builder
     .WaitFor(dabServer);
 
 builder.Build().Run();
-
