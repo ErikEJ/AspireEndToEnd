@@ -4,6 +4,10 @@ var sqlServer = builder.AddSqlServer("sql");
 
 var sqlDatabase = sqlServer.AddDatabase("test");
 
+//.WithCreationScript(@"CREATE DATABASE [test]
+//GO
+//" + File.ReadAllText("../../Database/DataLossScript.sql"));
+
 var sqlProject = builder
     .AddSqlProject<Projects.Database>("sqlproj")
     .WithReference(sqlDatabase);
