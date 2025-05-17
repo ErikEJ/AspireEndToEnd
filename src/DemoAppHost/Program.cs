@@ -2,11 +2,16 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var sqlServer = builder.AddSqlServer("sql");
 
-var sqlDatabase = sqlServer.AddDatabase("test");
+// .WithDbGate()
+// Uncomment the following lines to use a persistent container and persistent storage
+// This improves the performance of the database server and allows you to keep data between runs
+//.WithLifetime(ContainerLifetime.Persistent)
+//.WithDataVolume("sql-data");
 
-//.WithCreationScript(@"CREATE DATABASE [test]
-//GO
-//" + File.ReadAllText("../../Database/DataLossScript.sql"));
+var sqlDatabase = sqlServer.AddDatabase("test"):
+
+//    .WithCreationScript(@"CREATE DATABASE [test]
+//GO" + File.ReadAllText("../Database/DataLossScript.sql"));
 
 var sqlProject = builder
     .AddSqlProject<Projects.Database>("sqlproj")
