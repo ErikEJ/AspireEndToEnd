@@ -8,9 +8,9 @@ var sqlServer = builder.AddSqlServer("sql");
 //.WithLifetime(ContainerLifetime.Persistent)
 //.WithDataVolume("sql-data");
 
-var sqlDatabase = sqlServer.AddDatabase("test"):
+var sqlDatabase = sqlServer.AddDatabase("test");
 
-//    .WithCreationScript(@"CREATE DATABASE [test]
+//    .WithCreationScript(@"IF NOT EXISTS ( SELECT 1 FROM sys.databases WHERE name = [test] ) CREATE DATABASE [test];
 //GO" + File.ReadAllText("../Database/DataLossScript.sql"));
 
 var sqlProject = builder
