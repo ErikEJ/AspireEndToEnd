@@ -8,7 +8,7 @@ var sqlServer = builder.AddSqlServer("sql");
 //.WithLifetime(ContainerLifetime.Persistent)
 //.WithDataVolume("sql-data");
 
-var sqlDatabase = sqlServer.AddDatabase("test");
+var sqlDatabase = sqlServer.AddDatabase("Database");
 
 //    .WithCreationScript(@"IF NOT EXISTS ( SELECT 1 FROM sys.databases WHERE name = [test] ) CREATE DATABASE [test];
 //GO" + File.ReadAllText("../Database/DataLossScript.sql"));
@@ -17,13 +17,9 @@ var sqlProject = builder
     .AddSqlProject<Projects.Database>("sqlproj")
     .WithReference(sqlDatabase);
 
-var dabServer = builder.AddDataAPIBuilder("dab")
+builder
+    .AddProject<Projects.WebApi>("client")
     .WithReference(sqlDatabase)
     .WaitForCompletion(sqlProject);
-
-builder
-    .AddProject<Projects.Metalhead_WpfApiDataExample_UI_Wpf>("client")
-    .WithEnvironment("Chinook__ApiBaseUrl", dabServer.GetEndpoint("http"))
-    .WaitFor(dabServer);
 
 builder.Build().Run();

@@ -25,6 +25,7 @@
     </ItemGroup>
 
     <PropertyGroup>
+      <TargetServerName>(localdb)\mssqllocaldb</TargetServerName>
         <!-- Refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#publishing-support for supported publishing options -->
     </PropertyGroup>
 </Project> 
