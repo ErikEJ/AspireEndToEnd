@@ -26,6 +26,8 @@ Add simple publish:
 <TargetServerName>(localdb)\mssqllocaldb</TargetServerName>
 ```
 
+Show and remove readme!
+
 Import Chinook database from SQLEXPRESS 2025 instance
 
 Run build.
@@ -58,17 +60,29 @@ Add Web API project
 
 Add reference to Class lib.
 
-Update Program.cs: (add swagger, use Db and add endpoint)
+Update Program.cs: (add swagger, use Db and add endpoint, add connection string)
+
+```c#
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+    });
+}
+```
 
 ```c#
 builder.Services.AddDbContext<DatabaseContext>(o => {
-    o.UseSqlServer(builder.Configuration.GetConnectionString("ChinookDatabase"));
+    o.UseSqlServer(builder.Configuration.GetConnectionString("Database"));
 });
 ```
 
 ```json
     "ConnectionStrings": {
-        "ChinookDatabase": "Server=(localdb)\\mssqllocaldb;Database=Database;Trusted_Connection=True;Encrypt=false"
+        "Database": "Server=(localdb)\\mssqllocaldb;Database=Database;Trusted_Connection=True;Encrypt=false"
     }
 ```
 
@@ -87,11 +101,11 @@ app.MapGet("/albums", async (DatabaseContext db) =>
 });
 ```
 
-Add appsettings.json with connection string:
-
 Run Web API and demo Swagger method.
 
 Add Aspire AppHost
+
+Note: dotnet new install Aspire.ProjectTemplates
 
 Add reference to Database project and WebAPI
 
@@ -103,7 +117,7 @@ Add Packages:
 </ItemGroup>
 ```
 
-Update Program.cs:
+Update AppHost.cs:
 
 ```c#
 var sqlServer = builder.AddSqlServer("sql");
@@ -118,7 +132,6 @@ builder
     .AddProject<Projects.WebApi>("client")
     .WithReference(sqlDatabase)
     .WaitForCompletion(sqlProject);
-
 ```
 
 Explain code!
