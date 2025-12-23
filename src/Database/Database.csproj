@@ -1,31 +1,27 @@
-﻿<Project Sdk="MSBuild.Sdk.SqlProj/3.3.0">
-    <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
-        <SqlServerVersion>Sql160</SqlServerVersion>
-        <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
-        <!-- For additional properties that can be set here, please refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#model-properties -->
-    </PropertyGroup>
-
-    <ItemGroup>
-        <!-- These packages adds additional code analysis rules -->
-        <!-- We recommend using these, but they can be removed if desired -->
-        <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="3.0.0" />
-        <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="3.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PostDeploy Include="Post-Deployment\Post-Deploy.sql" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="DataLossScript.sql" />
-      <None Update="DataLossScript.sql">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
-    <PropertyGroup>
-      <TargetServerName>(localdb)\mssqllocaldb</TargetServerName>
-        <!-- Refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#publishing-support for supported publishing options -->
-    </PropertyGroup>
-</Project> 
+<Project Sdk="MSBuild.Sdk.SqlProj/3.3.0">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <SqlServerVersion>Sql160</SqlServerVersion>
+    <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
+    <!-- For additional properties that can be set here, please refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#model-properties -->
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- These packages adds additional code analysis rules -->
+    <!-- We recommend using these, but they can be removed if desired -->
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="3.0.0" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="3.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Post-Deployment/postdeploy.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="DataLossScript.sql" />
+    <None Update="DataLossScript.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetServerName>(localdb)\mssqllocaldb</TargetServerName>
+    <!-- Refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#publishing-support for supported publishing options -->
+  </PropertyGroup>
+</Project>

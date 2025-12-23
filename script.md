@@ -6,7 +6,7 @@ Close all VS instances
 
 Remove Server Explorer connections
 
-Populate Chinook on SQL Express 2025 instance
+Populate Chinook on SQL Express 2025 instance with Chinook_SqlServer_AutoIncrementPKs.sql
 
 ## Demo script
 
@@ -37,8 +37,6 @@ Show rule violations in Error List.
 Show .dacpac and explain.
 
 Add stored proc with SELECT * and see warnings in editor.
-
-Add seed data from Artist table.
 
 Create diagram and show it.
 
@@ -135,6 +133,18 @@ builder
 ```
 
 Explain code!
+
+Run App Host
+
+Show web api connection string in Dashboard
+
+Open web api and navigate to Swagger
+
+Run endpoint
+
+Add seed data from Artist table.
+
+Rebuild
 
 Run App Host
 
