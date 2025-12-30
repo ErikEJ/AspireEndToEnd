@@ -7,12 +7,11 @@
     <EfcptConfigDbContextNameSpace>Models</EfcptConfigDbContextNameSpace>
     <EfcptConfigModelNamespace>Models</EfcptConfigModelNamespace>
     <EfcptLogVerbosity>detailed</EfcptLogVerbosity>
-    <!--<EfcptSqlProj>..\Database\Database.csproj</EfcptSqlProj>-->
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.1" />
-    <PackageReference Include="JD.Efcpt.Build" Version="0.10.2" />
+    <PackageReference Include="JD.Efcpt.Build" Version="0.10.10" />
   </ItemGroup>
 
 </Project>
