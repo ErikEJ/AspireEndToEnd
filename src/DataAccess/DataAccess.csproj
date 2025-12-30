@@ -4,8 +4,6 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <EfcptConfigDbContextNameSpace>Models</EfcptConfigDbContextNameSpace>
-    <EfcptConfigModelNamespace>Models</EfcptConfigModelNamespace>
     <EfcptLogVerbosity>detailed</EfcptLogVerbosity>
   </PropertyGroup>
 
