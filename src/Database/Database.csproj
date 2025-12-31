@@ -1,6 +1,5 @@
 <Project Sdk="MSBuild.Sdk.SqlProj/3.3.0">
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
     <SqlServerVersion>Sql160</SqlServerVersion>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
     <!-- For additional properties that can be set here, please refer to https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#model-properties -->
@@ -8,8 +7,8 @@
   <ItemGroup>
     <!-- These packages adds additional code analysis rules -->
     <!-- We recommend using these, but they can be removed if desired -->
-    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="3.0.0" />
-    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="3.0.0" />
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Post-Deployment/postdeploy.sql" />
