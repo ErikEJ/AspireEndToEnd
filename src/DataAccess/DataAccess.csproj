@@ -1,15 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="JD.Efcpt.Sdk/0.12.2">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <EfcptLogVerbosity>detailed</EfcptLogVerbosity>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.1" />
-    <PackageReference Include="JD.Efcpt.Build" Version="0.10.10" />
   </ItemGroup>
 
 </Project>
