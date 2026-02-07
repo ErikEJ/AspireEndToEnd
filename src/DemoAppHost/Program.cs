@@ -22,4 +22,8 @@ builder
     .WithReference(sqlDatabase)
     .WaitForCompletion(sqlProject);
 
+var dabServer = builder.AddDataAPIBuilder("dab")
+    .WithReference(sqlDatabase)
+    .WaitForCompletion(sqlProject);
+
 builder.Build().Run();
