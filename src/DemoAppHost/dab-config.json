@@ -2,7 +2,7 @@
   "$schema": "https://github.com/Azure/data-api-builder/releases/download/v1.6.87/dab.draft.schema.json",
   "data-source": {
     "database-type": "mssql",
-    "connection-string": "@env('ConnectionStrings__test')",
+    "connection-string": "@env('ConnectionStrings__Database')",
     "options": {
       "set-session-context": false
     }
