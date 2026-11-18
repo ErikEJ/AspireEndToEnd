@@ -1,4 +1,4 @@
-﻿<Project Sdk="Aspire.AppHost.Sdk/13.3.2">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,22 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Azure.DataApiBuilder" Version="13.3.0" />
-    <PackageReference Include="CommunityToolkit.Aspire.Hosting.SqlDatabaseProjects" Version="13.3.0" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="17.0.0" />
+    <PackageReference Include="Aspire.Hosting.Dotnet" Version="17.0.0" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.15" />
+    <PackageReference Include="Microsoft.NET.StringTools" Version="18.4.0" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Azure.DataApiBuilder" Version="17.0.0-beta.1052" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.SqlDatabaseProjects" Version="17.0.0-beta.1052" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="DataLossScript.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="DataLossScript.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Database\Database.csproj" />
-    <ProjectReference Include="..\WebApi\WebApi.csproj" />
+    <ProjectReference IsAspireProjectResource="true" ReferenceOutputAssembly="false" Include="..\Database\Database.csproj" />
+    <ProjectReference IsAspireProjectResource="true" ReferenceOutputAssembly="false" Include="..\WebApi\WebApi.csproj" />
   </ItemGroup>
 
 </Project>
